@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffd400">
+<title>ZED QR | ساخت QR کد رایگان و سریع</title>
+<meta name="description" content="ZED QR؛ ساخت QR کد رایگان برای لینک، متن، Wi‑Fi، تلفن و ایمیل. ساخت، شخصی‌سازی، دانلود و ذخیره QR کد در حساب کاربری." />
+<meta name="keywords" content="ZED QR, ZEDQR, ساخت QR, ساخت QR کد, QR Code, QR ساز, تولید QR کد" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="author" content="AliRus86" />
+<meta name="application-name" content="ZED QR" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="ZED QR" />
+<meta property="og:title" content="ZED QR | ساخت QR کد رایگان و سریع" />
+<meta property="og:description" content="ساخت، شخصی‌سازی و دانلود QR کد برای لینک، متن، Wi‑Fi، تلفن و ایمیل." />
+<meta property="og:url" content="https://zedqr.com/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="ZED QR | ساخت QR کد رایگان و سریع" />
+<meta name="twitter:description" content="ساخت و دانلود QR کد رایگان با ZED QR." />
+<link rel="canonical" href="https://zedqr.com/" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23111'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='55' fill='%23ffd400'%3EZ%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--y:#ffd400;--b:#0d0d0d;--line:#ffffff16}
+*{box-sizing:border-box}
+body{margin:0;background:var(--y);font-family:Vazirmatn,Arial;color:#111}
+button,input,textarea,select{font:inherit}
+.nav{max-width:1180px;margin:auto;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.25rem}
+.brand .logo{width:48px;height:48px;border-radius:13px;background:#111;color:var(--y);display:grid;place-items:center;font-size:22px}
+.btn{border:0;border-radius:12px;padding:11px 15px;background:#111;color:#fff;font-weight:800;cursor:pointer;transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.light{background:#fff;color:#111;border:1px solid #111}
+.btn.yellow{background:var(--y);color:#111}
+.hero{max-width:1180px;margin:25px auto;padding:20px;display:grid;grid-template-columns:1fr .85fr;gap:25px;align-items:center}
+.hero h1{font-size:clamp(3rem,7vw,6rem);line-height:.95;margin:16px 0;font-weight:900;letter-spacing:-4px}
+.hero p{line-height:2;max-width:620px}
+.card{background:#111;color:#fff;border-radius:26px;padding:20px;box-shadow:0 25px 70px #0003}
+.preview{background:#fff;border-radius:20px;min-height:290px;display:grid;place-items:center;padding:20px}
+.section{margin:22px auto;padding:0 20px;max-width:1180px}
+.title{display:flex;justify-content:space-between;align-items:end;margin-bottom:12px}
+.title h2{margin:0;font-size:2rem}
+.muted{color:#555}
+.generator{display:grid;grid-template-columns:1fr .9fr;gap:16px}
+.panel{background:#111;color:#fff;border-radius:25px;padding:20px}
+.tabs{display:flex;gap:7px;flex-wrap:wrap}
+.tab{background:#222;color:#ddd;border:1px solid var(--line);padding:9px 11px;border-radius:10px;cursor:pointer}
+.tab.active{background:var(--y);color:#111}
+label{display:block;color:#aaa;font-size:.88rem;margin:12px 0 6px}
+input,textarea,select{width:100%;background:#0a0a0a;color:#fff;border:1px solid #ffffff16;border-radius:11px;padding:12px;outline:none}
+textarea{min-height:105px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.generate{width:100%;margin-top:13px;padding:13px;border:0;border-radius:12px;background:var(--y);font-weight:900;cursor:pointer}
+.stage{background:#f5f5f5;color:#111;border-radius:22px;min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px}
+.qrbox{background:#fff;padding:14px;border-radius:13px;min-width:250px;min-height:250px;display:grid;place-items:center}
+.features,.dashgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.feature,.dashcard{background:#fff;border-radius:18px;padding:18px}
+.feature h3{margin:8px 0}
+.feature p{color:#555;line-height:1.7;margin:0;font-size:.9rem}
+#dashboard{display:none}
+.dashgrid{grid-template-columns:repeat(3,1fr)}
+.history{margin-top:12px;background:#111;color:#fff;border-radius:20px;padding:18px}
+.qr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-top:14px}
+.qr-item{background:#1a1a1a;border:1px solid #ffffff1a;border-radius:14px;padding:12px;text-align:center}
+.qr-item img{width:100%;max-width:140px;border-radius:8px;background:#fff;padding:6px}
+.qr-item .meta{font-size:11px;color:#888;margin:8px 0;word-break:break-all}
+.qr-item .actions{display:flex;gap:6px;justify-content:center;margin-top:8px}
+	.qr-item .actions button{font-size:11px;padding:6px 10px;border-radius:8px;border:0;cursor:pointer;font-weight:700}
+.qr-item .actions .dl{background:var(--y);color:#111}
+.qr-item .actions .del{background:#dc3545;color:#fff}
+.empty{text-align:center;padding:40px;color:#888}
+.empty .ico{font-size:50px;margin-bottom:10px}
+.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}
+.modal.show{display:flex}
+.modalbox{width:min(440px,100%);background:#111;color:#fff;padding:22px;border-radius:23px}
+.modalbox h2{margin:0}
+.close{float:left;background:#222;color:#fff;border:0;border-radius:9px;width:36px;height:36px;cursor:pointer}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:#111;color:#fff;padding:11px 16px;border-radius:11px;opacity:0;transition:.2s;z-index:30;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+footer{max-width:1180px;margin:40px auto;padding:20px;border-top:1px solid #0002;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:900px){.hero,.generator{grid-template-columns:1fr}.features{grid-template-columns:1fr 1fr}.dashgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:550px){.features,.dashgrid,.row{grid-template-columns:1fr}.hero h1{font-size:3.4rem}}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"ZED QR",
+  "url":"https://zedqr.com/",
+  "description":"ساخت QR کد رایگان برای لینک، متن، Wi‑Fi، تلفن و ایمیل.",
+  "applicationCategory":"UtilitiesApplication",
+  "operatingSystem":"Web Browser",
+  "author":{"@type":"Person","name":"AliRus86"}
+}
+</script>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="brand"><div class="logo">⚡</div><span>ZED QR</span></div>
+ <div id="navActions"><button class="btn light" onclick="openAuth('login')">ورود / ثبت‌نام</button></div>
+</nav>
+
+<section class="hero">
+ <div>
+  <b>⚡ سریع، ساده، ZED</b>
+  <h1>.Your World<br>.Encoded</h1>
+  <p>لینک، متن، Wi‑Fi، تلفن و ایمیل را به QR تبدیل کن؛ شخصی‌سازی کن، دانلود کن و در حساب خودت نگه دار.</p>
+  <button class="btn" onclick="goTo('generator')">ساخت QR رایگان ←</button>
+ </div>
+	
+ <div class="card">ZED QR<div class="preview"><div id="heroQR"></div></div></div>
+</section>
+
+<section class="section" id="generator">
+ <div class="title"><div><h2>ساخت QR</h2><span class="muted">کاملاً داخل مرورگر</span></div></div>
+ <div class="generator">
+  <div class="panel">
+   <div class="tabs">
+    <button class="tab active" data-type="text" onclick="setTab(this,'text')">متن / لینک</button>
+    <button class="tab" data-type="wifi" onclick="setTab(this,'wifi')">Wi‑Fi</button>
+    <button class="tab" data-type="phone" onclick="setTab(this,'phone')">تلفن</button>
+    <button class="tab" data-type="email" onclick="setTab(this,'email')">ایمیل</button>
+   </div>
+   <div id="form"></div>
+   <div class="row">
+     <div><label>رنگ QR</label><input id="dark" type="color" value="#000000"></div>
+     <div><label>پس‌زمینه</label><input id="light" type="color" value="#ffffff"></div>
+   </div>
+   <label>اندازه</label><input id="size" type="range" min="180" max="360" value="250">
+   <button class="generate" onclick="makeQR()">⚡ ساخت QR</button>
+  </div>
+  <div class="stage">
+   <div class="qrbox" id="qr"></div>
+   <b id="qrStatus">QR هنوز ساخته نشده</b>
+   <div>
+     <button class="btn" onclick="downloadQR()">⬇ دانلود</button>
+     <button class="btn light" onclick="saveQR()">💾 ذخیره</button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="dashboard">
+ <div class="title">
+   <div><h2>پنل کاربری</h2><span class="muted" id="welcome"></span></div>
+   <button class="btn" onclick="logout()">خروج</button>
+ </div>
+ <div class="dashgrid">
+  <div class="dashcard"><b>QRهای ذخیره‌شده</b><h2 id="count">0</h2></div>
+  <div class="dashcard"><b>آخرین فعالیت</b><h2 id="last" style="font-size:1rem">—</h2></div>
+  <div class="dashcard"><b>نام کاربری</b><h2 id="userName">—</h2></div>
+ </div>
+ <div class="history">
+  <h3>📁 QRهای من</h3>
+  <div id="history"></div>
+ </div>
+</section>
+
+<footer><b>©2026 ZED QR</b><span>Crafted by ⚡ AliRus86</span></footer>
+	<div class="modal" id="modal">
+ <div class="modalbox">
+  <button class="close" onclick="closeAuth()">×</button>
+  <h2 id="authTitle"></h2>
+  <p style="color:#aaa;font-size:.9rem">حساب و QRهای ذخیره‌شده با Supabase نگهداری می‌شوند.</p>
+  <div id="authForm"></div>
+ </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ State ============ */
+var type = 'text';
+var currentData = '';
+var savedList = [];
+
+/* ============ Helpers ============ */
+function $(id){ return document.getElementById(id); }
+function toast(msg){
+  var t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2200);
+}
+function goTo(id){ var el=$(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
+
+/* ============ Forms ============ */
+var forms = {
+  text:  '<label>متن یا لینک</label><textarea id="v" placeholder="https://example.com"></textarea>',
+  phone: '<label>شماره تلفن</label><input id="v" placeholder="+49 123456789">',
+  email: '<label>ایمیل</label><input id="v" placeholder="hello@example.com"><label>موضوع</label><input id="s" placeholder="سلام"><label>متن</label><textarea id="body" placeholder="پیام..."></textarea>',
+  wifi:  '<label>نام شبکه</label><input id="ssid" placeholder="My WiFi"><label>رمز</label><input id="pass" type="password"><div class="row"><div><label>امنیت</label><select id="sec"><option>WPA</option><option>WEP</option><option>nopass</option></select></div><div><label>مخفی</label><select id="hid"><option>false</option><option>true</option></select></div></div>'
+};
+function renderForm(){ $('form').innerHTML = forms[type]; }
+function setTab(el, t){
+  document.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('active'); });
+  el.classList.add('active');
+  type = t;
+  renderForm();
+}
+
+/* ============ QR Data ============ */
+function getData(){
+  if(type==='text')  return $('v').value.trim();
+  if(type==='phone') return 'tel:' + $('v').value.trim();
+  if(type==='email') return 'mailto:' + $('v').value.trim() + '?subject=' + encodeURIComponent($('s').value) + '&body=' + encodeURIComponent($('body').value);
+  return 'WIFI:T:' + $('sec').value + ';S:' + $('ssid').value + ';P:' + $('pass').value + ';H:' + $('hid').value + ';;';
+}
+
+/* ============ QR Draw ============ */
+function drawQR(el, text, size, dark, light){
+  el.innerHTML = '';
+  new QRCode(el, {
+    text: text,
+    width: size,
+    height: size,
+    colorDark: dark,
+    colorLight: light,
+    correctLevel: QRCode.CorrectLevel.H
+  });
+}
+
+function makeQR(){
+  currentData = getData();
+  if(!currentData){ toast('اطلاعات را وارد کن'); return; }
+  drawQR($('qr'), currentData, +$('size').value, $('dark').value, $('light').value);
+  $('qrStatus').textContent = 'QR آماده است ⚡';
+  toast('QR ساخته شد');
+}
+
+function downloadQR(){
+  var img = $('qr').querySelector('img');
+  if(!img){ toast('اول QR بساز'); return; }
+  var a = document.createElement('a');
+  a.href = img.src;
+  a.download = 'zed-qr.png';
+  a.click();
+}
+
+/* ============ Supabase ============ */
+const SUPABASE_URL = 'https://wurjpxgyaswxfrcwtdoo.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_QT3Qs0Y5FaVpEf2_eCsulA_9k-BuUj9';
+var supabaseClient=null, supabaseReady=false, authMode='login', zedCurrentUser=null;
+function initSupabase(){if(!window.supabase)return false;if(SUPABASE_URL.indexOf('PASTE_')===0||SUPABASE_PUBLISHABLE_KEY.indexOf('PASTE_')===0)return false;try{supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);supabaseReady=true;return true}catch(e){console.error(e);return false}}
+function authReady(){if(!supabaseReady){toast('اتصال Supabase هنوز تنظیم نشده است');return false}return true}
+function currentUser(){return zedCurrentUser}
+function displayName(u){return u?((u.user_metadata&&u.user_metadata.display_name)||(u.email?u.email.split('@')[0]:'کاربر')):''}
+function esc(v){return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
+function formatDate(v){if(!v)return '—';try{return new Date(v).toLocaleString('fa-IR')}catch(e){return v}}
+function openAuth(mode){authMode=mode||'login';$('authTitle').textContent=authMode==='login'?'ورود به حساب':'ساخت حساب';var L=authMode==='login';$('authForm').innerHTML='<div style="display:flex;gap:8px;margin-bottom:15px"><button type="button" style="flex:1;padding:11px;border-radius:10px;border:1px solid #333;font-weight:700;cursor:pointer;font-size:1rem;background:'+(L?'#ffd400':'#222')+';color:'+(L?'#111':'#ddd')+'" onclick="switchAuth(\'login\')">ورود</button><button type="button" style="flex:1;padding:11px;border-radius:10px;border:1px solid #333;font-weight:700;cursor:pointer;font-size:1rem;background:'+(!L?'#ffd400':'#222')+';color:'+(!L?'#111':'#ddd')+'" onclick="switchAuth(\'register\')">ثبت‌نام</button></div><label>ایمیل</label><input id="au" type="email" placeholder="you@example.com" autocomplete="email"><label>رمز عبور</label><input id="ap" type="password" placeholder="حداقل ۶ کاراکتر" autocomplete="'+(L?'current-password':'new-password')+'"><button type="button" class="generate" onclick="submitAuth()">'+(L?'ورود':'ثبت‌نام')+'</button>';$('modal').classList.add('show');setTimeout(function(){var a=$('au');if(a)a.focus()},50)}
+function switchAuth(m){openAuth(m==='register'?'register':'login')}
+function closeAuth(){if($('modal'))$('modal').classList.remove('show')}
+async function submitAuth(){if(!authReady())return;var email=$('au').value.trim(),password=$('ap').value;if(!email||!password){toast('ایمیل و رمز را کامل کن');return}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){toast('ایمیل معتبر وارد کن');return}if(password.length<6){toast('رمز عبور حداقل ۶ کاراکتر باشد');return}try{if(authMode==='register'){var r=await supabaseClient.auth.signUp({email:email,password:password,options:{data:{display_name:email.split('@')[0]}}});if(r.error)throw r.error;closeAuth();if(r.data.session){zedCurrentUser=r.data.user;await updateUI();toast('ثبت‌نام موفق 🎉')}else toast('ثبت‌نام شد؛ ایمیلت را برای تأیید بررسی کن 📧')}else{var r=await supabaseClient.auth.signInWithPassword({email:email,password:password});if(r.error)throw r.error;zedCurrentUser=r.data.user;closeAuth();await updateUI();toast('خوش اومدی 😎')}}catch(e){console.error(e);var m=e.message||'خطا در ورود';if(m.toLowerCase().includes('invalid login credentials'))m='ایمیل یا رمز عبور اشتباه است';else if(m.toLowerCase().includes('email not confirmed'))m='اول ایمیلت را تأیید کن';else if(m.toLowerCase().includes('already registered'))m='این ایمیل قبلاً ثبت شده';toast(m)}}
+async function logout(){if(!authReady())return;var r=await supabaseClient.auth.signOut();if(r.error){toast('خروج انجام نشد');return}zedCurrentUser=null;savedList=[];await updateUI();toast('خارج شدی')}
+async function saveQR(){if(!currentData){toast('اول QR بساز');return}var u=currentUser();if(!u){toast('اول وارد شو');openAuth('register');return}var img=$('qr').querySelector('img');if(!img){toast('صبر کن QR آماده بشه');return}if(!authReady())return;try{var r=await supabaseClient.from('qr_history').insert({user_id:u.id,type:type,data:currentData,image:img.src});if(r.error)throw r.error;await updateUI();toast('در حساب ذخیره شد 💾')}catch(e){console.error(e);toast((e.message||'').includes('qr_history')?'جدول qr_history هنوز ساخته نشده':'ذخیره انجام نشد')}}
+async function getHistory(){var u=currentUser();if(!u||!authReady())return[];try{var r=await supabaseClient.from('qr_history').select('id,user_id,type,data,image,created_at').eq('user_id',u.id).order('created_at',{ascending:false}).limit(200);if(r.error)throw r.error;return r.data||[]}catch(e){console.error(e);return[]}}
+async function updateUI(){var u=currentUser(),nav=$('navActions');if(!u){nav.innerHTML='<button class="btn light" onclick="openAuth(\'login\')">ورود / ثبت‌نام</button>';$('dashboard').style.display='none';return}var name=displayName(u);nav.innerHTML='<button class="btn light" onclick="goTo(\'dashboard\')">👤 '+esc(name)+'</button> <button class="btn" onclick="logout()">خروج</button>';$('dashboard').style.display='block';$('welcome').textContent='خوش اومدی '+name;$('userName').textContent=name;savedList=await getHistory();$('count').textContent=savedList.length;$('last').textContent=savedList[0]?formatDate(savedList[0].created_at):'—';if(!savedList.length){$('history').innerHTML='<div class="empty"><div class="ico">📭</div><p>هنوز QR ذخیره نکردی!</p></div>';return}var h='<div class="qr-grid">';savedList.forEach(function(x){h+='<div class="qr-item"><img src="'+esc(x.image)+'" alt="QR"><div class="meta">'+esc(x.type)+' — '+esc(formatDate(x.created_at))+'</div><div class="actions"><button class="dl" onclick="downloadSaved(\''+esc(x.id)+'\')">⬇</button><button class="del" onclick="delQR(\''+esc(x.id)+'\')">🗑</button></div></div>'});h+='</div>';$('history').innerHTML=h}
+function downloadSaved(id){var item=savedList.find(function(x){return String(x.id)===String(id)});if(!item)return;var a=document.createElement('a');a.href=item.image;a.download='zed-qr-'+id+'.png';a.click()}
+async function delQR(id){if(!confirm('مطمئنی می‌خوای حذف کنی؟'))return;var u=currentUser();if(!u||!authReady())return;try{var r=await supabaseClient.from('qr_history').delete().eq('id',id).eq('user_id',u.id);if(r.error)throw r.error;await updateUI();toast('حذف شد 🗑')}catch(e){console.error(e);toast('حذف انجام نشد')}}
+async function initAuth(){if(!initSupabase()){updateUI();return}try{var r=await supabaseClient.auth.getSession();if(r.error)throw r.error;zedCurrentUser=r.data.session?r.data.session.user:null;await updateUI();supabaseClient.auth.onAuthStateChange(function(event,session){zedCurrentUser=session?session.user:null;setTimeout(function(){updateUI()},0)})}catch(e){console.error(e);toast('اتصال به Supabase برقرار نشد');updateUI()}}
+
+/* ============ Init ============ */
+renderForm();
+drawQR($('heroQR'), 'https://zedqr.com', 220, '#000', '#fff');
+initAuth();
+</script>
+</body>
+</html>
