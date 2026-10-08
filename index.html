@@ -1,6 +1,47 @@
 <!doctype html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
+<style id="i18nh">body{visibility:hidden}</style>
+<style>#lang{width:auto;padding:10px 12px;border-radius:12px;background:#111;color:#fff;border:1px solid #ffffff30;cursor:pointer;font-weight:700}.navr{display:flex;align-items:center;gap:10px;flex-wrap:wrap}</style>
+<!-- ZEDQR_PROTECTION_V2 | © 2026 AliRus86 / ZED QR | Unauthorized republishing prohibited -->
+<meta name="author" content="AliRus86">
+<meta name="application-name" content="ZED QR">
+<meta name="copyright" content="© 2026 AliRus86 / ZED QR">
+<meta name="robots" content="index,follow">
+
+<script>
+/* ZEDQR_PROTECTION_V2
+   This is deterrence/provenance protection only; browser-delivered code cannot be made
+   impossible to inspect or copy. Do not put secrets here.
+*/
+(function () {
+  'use strict';
+
+  // Block common casual copy actions without changing the visual UI.
+  document.addEventListener('contextmenu', function (e) { e.preventDefault(); }, true);
+  document.addEventListener('dragstart', function (e) { e.preventDefault(); }, true);
+
+  // Block common source/devtools shortcuts used by casual copiers.
+  document.addEventListener('keydown', function (e) {
+    var k = String(e.key || '').toLowerCase();
+    var blocked =
+      k === 'f12' ||
+      (e.ctrlKey && e.shiftKey && (k === 'i' || k === 'j' || k === 'c')) ||
+      (e.ctrlKey && (k === 'u' || k === 's'));
+    if (blocked) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+  }, true);
+
+  // Ownership/provenance marker. This does not affect the page UI.
+  window.__ZEDQR_OWNER__ = 'AliRus86';
+  window.__ZEDQR_BRAND__ = 'ZED QR';
+})();
+</script>
+
+<!-- ZED QR source: © AliRus86. Unauthorized redistribution or rebranding is not permitted. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#ffd400">
@@ -96,12 +137,29 @@ footer{max-width:1180px;margin:40px auto;padding:20px;border-top:1px solid #0002
   "author":{"@type":"Person","name":"AliRus86"}
 }
 </script>
+<script>
+/* ZED QR — copyright / anti-copy deterrence. This is a deterrent, not encryption. */
+(function(){
+  'use strict';
+  const OWNER='AliRus86', BRAND='ZED QR';
+  document.addEventListener('contextmenu',e=>e.preventDefault());
+  document.addEventListener('dragstart',e=>{ if(e.target && e.target.closest && e.target.closest('img')) e.preventDefault(); });
+  document.addEventListener('keydown',e=>{
+    const k=(e.key||'').toLowerCase();
+    if(e.key==='F12' || (e.ctrlKey&&e.shiftKey&&['i','j','c'].includes(k)) || (e.ctrlKey&&['u','s'].includes(k))){e.preventDefault();e.stopPropagation();}
+  },true);
+  Object.defineProperty(window,'__ZED_QR_PROTECTED__',{value:Object.freeze({owner:OWNER,brand:BRAND}),writable:false,configurable:false});
+})();
+</script>
+<meta name="copyright" content="ZED QR — AliRus86">
+<meta name="author" content="AliRus86">
+<meta name="application-name" content="ZED QR">
 </head>
 <body>
 
 <nav class="nav">
  <div class="brand"><div class="logo">⚡</div><span>ZED QR</span></div>
- <div id="navActions"><button class="btn light" onclick="openAuth('login')">ورود / ثبت‌نام</button></div>
+ <div class="navr"><select id="lang" aria-label="Language"></select><div id="navActions"><button class="btn light" onclick="openAuth('login')">ورود / ثبت‌نام</button></div></div>
 </nav>
 
 <section class="hero">
@@ -267,5 +325,114 @@ renderForm();
 drawQR($('heroQR'), 'https://zedqr.com', 220, '#000', '#fff');
 initAuth();
 </script>
+<script>
+/* ZED QR i18n: en (default), fa, tr, ar */
+(function(){
+var LG={en:{n:'English',d:'ltr',l:'en-US',i:0},tr:{n:'Türkçe',d:'ltr',l:'tr-TR',i:1},ar:{n:'العربية',d:'rtl',l:'ar',i:2},fa:{n:'فارسی',d:'rtl',l:'fa-IR',i:-1}};
+var T={
+'ورود / ثبت‌نام':['Log in / Sign up','Giriş / Kayıt ol','تسجيل الدخول / إنشاء حساب'],
+'⚡ سریع، ساده، ZED':['⚡ Fast, simple, ZED','⚡ Hızlı, basit, ZED','⚡ سريع، بسيط، ZED'],
+'.Your World':['Your World','Dünyan','عالمك'],'.Encoded':['Encoded.','Şifreli.','مُشفَّر.'],
+'لینک، متن، Wi‑Fi، تلفن و ایمیل را به QR تبدیل کن؛ شخصی‌سازی کن، دانلود کن و در حساب خودت نگه دار.':['Turn links, text, Wi‑Fi, phone and email into QR codes; customize, download, and keep them in your account.','Bağlantı, metin, Wi‑Fi, telefon ve e-postayı QR koda dönüştür; özelleştir, indir ve hesabında sakla.','حوّل الروابط والنصوص وWi‑Fi والهاتف والبريد إلى رموز QR؛ خصّصها ونزّلها واحتفظ بها في حسابك.'],
+'ساخت QR رایگان ←':['Create QR for free →','Ücretsiz QR oluştur →','أنشئ رمز QR مجانًا ←'],
+'ساخت QR':['Create QR','QR Oluştur','إنشاء QR'],
+'کاملاً داخل مرورگر':['Entirely in your browser','Tamamen tarayıcında','بالكامل داخل المتصفح'],
+'متن / لینک':['Text / Link','Metin / Bağlantı','نص / رابط'],
+'تلفن':['Phone','Telefon','هاتف'],
+'ایمیل':['Email','E-posta','البريد الإلكتروني'],
+'رنگ QR':['QR color','QR rengi','لون QR'],
+'پس‌زمینه':['Background','Arka plan','الخلفية'],
+'اندازه':['Size','Boyut','الحجم'],
+'⚡ ساخت QR':['⚡ Generate QR','⚡ QR Oluştur','⚡ إنشاء QR'],
+'QR هنوز ساخته نشده':['QR not created yet','QR henüz oluşturulmadı','لم يتم إنشاء QR بعد'],
+'⬇ دانلود':['⬇ Download','⬇ İndir','⬇ تنزيل'],
+'💾 ذخیره':['💾 Save','💾 Kaydet','💾 حفظ'],
+'پنل کاربری':['Dashboard','Kullanıcı paneli','لوحة المستخدم'],
+'خروج':['Log out','Çıkış','تسجيل الخروج'],
+'QRهای ذخیره‌شده':['Saved QRs','Kayıtlı QR\'lar','رموز QR المحفوظة'],
+'آخرین فعالیت':['Last activity','Son etkinlik','آخر نشاط'],
+'نام کاربری':['Username','Kullanıcı adı','اسم المستخدم'],
+'📁 QRهای من':['📁 My QRs','📁 QR\'larım','📁 رموزي'],
+'حساب و QRهای ذخیره‌شده با Supabase نگهداری می‌شوند.':['Your account and saved QRs are stored with Supabase.','Hesabın ve kayıtlı QR\'lar Supabase ile saklanır.','يتم حفظ الحساب ورموز QR المحفوظة عبر Supabase.'],
+'ورود به حساب':['Log in','Giriş yap','تسجيل الدخول'],
+'ساخت حساب':['Create account','Hesap oluştur','إنشاء حساب'],
+'ورود':['Log in','Giriş','دخول'],
+'ثبت‌نام':['Sign up','Kayıt ol','إنشاء حساب'],
+'رمز عبور':['Password','Şifre','كلمة المرور'],
+'حداقل ۶ کاراکتر':['At least 6 characters','En az 6 karakter','6 أحرف على الأقل'],
+'متن یا لینک':['Text or link','Metin veya bağlantı','نص أو رابط'],
+'شماره تلفن':['Phone number','Telefon numarası','رقم الهاتف'],
+'موضوع':['Subject','Konu','الموضوع'],'سلام':['Hello','Merhaba','مرحبًا'],
+'متن':['Text','Metin','النص'],'پیام...':['Message...','Mesaj...','الرسالة...'],
+'نام شبکه':['Network name','Ağ adı','اسم الشبكة'],
+'رمز':['Password','Şifre','كلمة المرور'],
+'امنیت':['Security','Güvenlik','الأمان'],'مخفی':['Hidden','Gizli','مخفية'],
+'اطلاعات را وارد کن':['Enter the information','Bilgileri gir','أدخل المعلومات'],
+'QR ساخته شد':['QR created','QR oluşturuldu','تم إنشاء QR'],
+'QR آماده است ⚡':['QR is ready ⚡','QR hazır ⚡','رمز QR جاهز ⚡'],
+'اول QR بساز':['Create a QR first','Önce bir QR oluştur','أنشئ رمز QR أولًا'],
+'ایمیل و رمز را کامل کن':['Fill in email and password','E-posta ve şifreyi doldur','أدخل البريد وكلمة المرور'],
+'ایمیل معتبر وارد کن':['Enter a valid email','Geçerli bir e-posta gir','أدخل بريدًا إلكترونيًا صالحًا'],
+'رمز عبور حداقل ۶ کاراکتر باشد':['Password must be at least 6 characters','Şifre en az 6 karakter olmalı','يجب ألا تقل كلمة المرور عن 6 أحرف'],
+'ثبت‌نام موفق 🎉':['Signed up successfully 🎉','Kayıt başarılı 🎉','تم إنشاء الحساب بنجاح 🎉'],
+'ثبت‌نام شد؛ ایمیلت را برای تأیید بررسی کن 📧':['Signed up! Check your email to confirm 📧','Kayıt oldu! Onay için e-postanı kontrol et 📧','تم التسجيل! تحقق من بريدك للتأكيد 📧'],
+'خوش اومدی 😎':['Welcome 😎','Hoş geldin 😎','أهلًا بك 😎'],
+'ایمیل یا رمز عبور اشتباه است':['Incorrect email or password','E-posta veya şifre hatalı','البريد أو كلمة المرور غير صحيحة'],
+'اول ایمیلت را تأیید کن':['Confirm your email first','Önce e-postanı onayla','أكّد بريدك الإلكتروني أولًا'],
+'این ایمیل قبلاً ثبت شده':['This email is already registered','Bu e-posta zaten kayıtlı','هذا البريد مسجّل مسبقًا'],
+'خطا در ورود':['Login error','Giriş hatası','خطأ في تسجيل الدخول'],
+'خروج انجام نشد':['Logout failed','Çıkış yapılamadı','تعذّر تسجيل الخروج'],
+'خارج شدی':['Logged out','Çıkış yapıldı','تم تسجيل الخروج'],
+'اول وارد شو':['Log in first','Önce giriş yap','سجّل الدخول أولًا'],
+'صبر کن QR آماده بشه':['Wait until the QR is ready','QR\'ın hazır olmasını bekle','انتظر حتى يجهز رمز QR'],
+'در حساب ذخیره شد 💾':['Saved to your account 💾','Hesabına kaydedildi 💾','تم الحفظ في حسابك 💾'],
+'جدول qr_history هنوز ساخته نشده':['The qr_history table has not been created yet','qr_history tablosu henüz oluşturulmadı','لم يتم إنشاء جدول qr_history بعد'],
+'ذخیره انجام نشد':['Could not save','Kaydedilemedi','تعذّر الحفظ'],
+'مطمئنی می‌خوای حذف کنی؟':['Are you sure you want to delete this?','Silmek istediğine emin misin?','هل أنت متأكد من الحذف؟'],
+'حذف شد 🗑':['Deleted 🗑','Silindi 🗑','تم الحذف 🗑'],
+'حذف انجام نشد':['Could not delete','Silinemedi','تعذّر الحذف'],
+'اتصال به Supabase برقرار نشد':['Could not connect to Supabase','Supabase\'e bağlanılamadı','تعذّر الاتصال بـ Supabase'],
+'اتصال Supabase هنوز تنظیم نشده است':['Supabase is not configured yet','Supabase henüz yapılandırılmadı','لم يتم إعداد Supabase بعد'],
+'هنوز QR ذخیره نکردی!':['You haven\'t saved any QR yet!','Henüz hiç QR kaydetmedin!','لم تحفظ أي رمز QR بعد!']
+};
+var TITLE=['ZED QR | Free & Fast QR Code Generator','ZED QR | Ücretsiz ve Hızlı QR Kod Oluşturucu','ZED QR | منشئ رموز QR مجاني وسريع'];
+var PFX=[['خوش اومدی ',['Welcome, ','Hoş geldin, ','أهلًا بك، ']]];
+var cur='en';try{cur=localStorage.getItem('zedqr_lang')||'en'}catch(e){}
+if(!LG[cur])cur='en';
+var ORIG_TITLE=document.title;
+function tr(s){var i=LG[cur].i;if(i<0)return s;var k=String(s).trim(),v=T[k];
+ if(v)return String(s).replace(k,v[i]);
+ for(var j=0;j<PFX.length;j++){if(k.indexOf(PFX[j][0])===0)return PFX[j][1][i]+k.slice(PFX[j][0].length)}
+ return s}
+var tn=new WeakMap(),pa=new WeakMap(),obs=null;
+function run(){
+ if(obs)obs.disconnect();
+ var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),n;
+ while(n=w.nextNode()){var p=n.parentNode&&n.parentNode.nodeName;if(p=='SCRIPT'||p=='STYLE')continue;
+  var c=n.nodeValue,r=tn.get(n);if(!r||r.a!==c)r={o:c,a:c};
+  var t=tr(r.o);r.a=t;if(t!==c)n.nodeValue=t;tn.set(n,r)}
+ document.querySelectorAll('[placeholder]').forEach(function(e){var c=e.getAttribute('placeholder'),r=pa.get(e);
+  if(!r||r.a!==c)r={o:c,a:c};var t=tr(r.o);r.a=t;if(t!==c)e.setAttribute('placeholder',t);pa.set(e,r)});
+ start()}
+function start(){if(!obs)obs=new MutationObserver(function(){run()});
+ obs.observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['placeholder']})}
+function setLang(l,reload){cur=l;try{localStorage.setItem('zedqr_lang',l)}catch(e){}
+ var h=document.documentElement;h.lang=l;h.dir=LG[l].d;
+ document.title=LG[l].i<0?ORIG_TITLE:TITLE[LG[l].i];
+ var s=document.getElementById('lang');if(s)s.value=l;
+ run();if(reload&&typeof updateUI=='function')try{updateUI()}catch(e){}}
+var _t=window.toast;if(typeof _t=='function')window.toast=function(m){return _t(tr(String(m)))};
+var _c=window.confirm;window.confirm=function(m){return _c(tr(String(m)))};
+window.formatDate=function(v){if(!v)return'—';try{return new Date(v).toLocaleString(LG[cur].l)}catch(e){return v}};
+var s=document.getElementById('lang');
+if(s){s.innerHTML=['en','fa','tr','ar'].map(function(k){return'<option value="'+k+'">'+LG[k].n+'</option>'}).join('');
+ s.onchange=function(){setLang(s.value,true)}}
+setLang(cur,false);
+var hs=document.getElementById('i18nh');if(hs)hs.remove();
+})();
+
+setTimeout(function(){var h=document.getElementById("i18nh");if(h)h.remove()},2000);
+</script>
+<!-- ZEDQR_SOURCE_MARKER: © 2026 AliRus86 / ZED QR. Source provenance retained. -->
 </body>
 </html>
