@@ -328,75 +328,10 @@ initAuth();
 <script>
 /* ZED QR i18n: en (default), fa, tr, ar */
 (function(){
-var LG={en:{n:'English',d:'ltr',l:'en-US',i:0},tr:{n:'Türkçe',d:'ltr',l:'tr-TR',i:1},ar:{n:'العربية',d:'rtl',l:'ar',i:2},fa:{n:'فارسی',d:'rtl',l:'fa-IR',i:-1}};
-var T={
-'ورود / ثبت‌نام':['Log in / Sign up','Giriş / Kayıt ol','تسجيل الدخول / إنشاء حساب'],
-'⚡ سریع، ساده، ZED':['⚡ Fast, simple, ZED','⚡ Hızlı, basit, ZED','⚡ سريع، بسيط، ZED'],
-'.Your World':['Your World','Dünyan','عالمك'],'.Encoded':['Encoded.','Şifreli.','مُشفَّر.'],
-'لینک، متن، Wi‑Fi، تلفن و ایمیل را به QR تبدیل کن؛ شخصی‌سازی کن، دانلود کن و در حساب خودت نگه دار.':['Turn links, text, Wi‑Fi, phone and email into QR codes; customize, download, and keep them in your account.','Bağlantı, metin, Wi‑Fi, telefon ve e-postayı QR koda dönüştür; özelleştir, indir ve hesabında sakla.','حوّل الروابط والنصوص وWi‑Fi والهاتف والبريد إلى رموز QR؛ خصّصها ونزّلها واحتفظ بها في حسابك.'],
-'ساخت QR رایگان ←':['Create QR for free →','Ücretsiz QR oluştur →','أنشئ رمز QR مجانًا ←'],
-'ساخت QR':['Create QR','QR Oluştur','إنشاء QR'],
-'کاملاً داخل مرورگر':['Entirely in your browser','Tamamen tarayıcında','بالكامل داخل المتصفح'],
-'متن / لینک':['Text / Link','Metin / Bağlantı','نص / رابط'],
-'تلفن':['Phone','Telefon','هاتف'],
-'ایمیل':['Email','E-posta','البريد الإلكتروني'],
-'رنگ QR':['QR color','QR rengi','لون QR'],
-'پس‌زمینه':['Background','Arka plan','الخلفية'],
-'اندازه':['Size','Boyut','الحجم'],
-'⚡ ساخت QR':['⚡ Generate QR','⚡ QR Oluştur','⚡ إنشاء QR'],
-'QR هنوز ساخته نشده':['QR not created yet','QR henüz oluşturulmadı','لم يتم إنشاء QR بعد'],
-'⬇ دانلود':['⬇ Download','⬇ İndir','⬇ تنزيل'],
-'💾 ذخیره':['💾 Save','💾 Kaydet','💾 حفظ'],
-'پنل کاربری':['Dashboard','Kullanıcı paneli','لوحة المستخدم'],
-'خروج':['Log out','Çıkış','تسجيل الخروج'],
-'QRهای ذخیره‌شده':['Saved QRs','Kayıtlı QR\'lar','رموز QR المحفوظة'],
-'آخرین فعالیت':['Last activity','Son etkinlik','آخر نشاط'],
-'نام کاربری':['Username','Kullanıcı adı','اسم المستخدم'],
-'📁 QRهای من':['📁 My QRs','📁 QR\'larım','📁 رموزي'],
-'حساب و QRهای ذخیره‌شده با Supabase نگهداری می‌شوند.':['Your account and saved QRs are stored with Supabase.','Hesabın ve kayıtlı QR\'lar Supabase ile saklanır.','يتم حفظ الحساب ورموز QR المحفوظة عبر Supabase.'],
-'ورود به حساب':['Log in','Giriş yap','تسجيل الدخول'],
-'ساخت حساب':['Create account','Hesap oluştur','إنشاء حساب'],
-'ورود':['Log in','Giriş','دخول'],
-'ثبت‌نام':['Sign up','Kayıt ol','إنشاء حساب'],
-'رمز عبور':['Password','Şifre','كلمة المرور'],
-'حداقل ۶ کاراکتر':['At least 6 characters','En az 6 karakter','6 أحرف على الأقل'],
-'متن یا لینک':['Text or link','Metin veya bağlantı','نص أو رابط'],
-'شماره تلفن':['Phone number','Telefon numarası','رقم الهاتف'],
-'موضوع':['Subject','Konu','الموضوع'],'سلام':['Hello','Merhaba','مرحبًا'],
-'متن':['Text','Metin','النص'],'پیام...':['Message...','Mesaj...','الرسالة...'],
-'نام شبکه':['Network name','Ağ adı','اسم الشبكة'],
-'رمز':['Password','Şifre','كلمة المرور'],
-'امنیت':['Security','Güvenlik','الأمان'],'مخفی':['Hidden','Gizli','مخفية'],
-'اطلاعات را وارد کن':['Enter the information','Bilgileri gir','أدخل المعلومات'],
-'QR ساخته شد':['QR created','QR oluşturuldu','تم إنشاء QR'],
-'QR آماده است ⚡':['QR is ready ⚡','QR hazır ⚡','رمز QR جاهز ⚡'],
-'اول QR بساز':['Create a QR first','Önce bir QR oluştur','أنشئ رمز QR أولًا'],
-'ایمیل و رمز را کامل کن':['Fill in email and password','E-posta ve şifreyi doldur','أدخل البريد وكلمة المرور'],
-'ایمیل معتبر وارد کن':['Enter a valid email','Geçerli bir e-posta gir','أدخل بريدًا إلكترونيًا صالحًا'],
-'رمز عبور حداقل ۶ کاراکتر باشد':['Password must be at least 6 characters','Şifre en az 6 karakter olmalı','يجب ألا تقل كلمة المرور عن 6 أحرف'],
-'ثبت‌نام موفق 🎉':['Signed up successfully 🎉','Kayıt başarılı 🎉','تم إنشاء الحساب بنجاح 🎉'],
-'ثبت‌نام شد؛ ایمیلت را برای تأیید بررسی کن 📧':['Signed up! Check your email to confirm 📧','Kayıt oldu! Onay için e-postanı kontrol et 📧','تم التسجيل! تحقق من بريدك للتأكيد 📧'],
-'خوش اومدی 😎':['Welcome 😎','Hoş geldin 😎','أهلًا بك 😎'],
-'ایمیل یا رمز عبور اشتباه است':['Incorrect email or password','E-posta veya şifre hatalı','البريد أو كلمة المرور غير صحيحة'],
-'اول ایمیلت را تأیید کن':['Confirm your email first','Önce e-postanı onayla','أكّد بريدك الإلكتروني أولًا'],
-'این ایمیل قبلاً ثبت شده':['This email is already registered','Bu e-posta zaten kayıtlı','هذا البريد مسجّل مسبقًا'],
-'خطا در ورود':['Login error','Giriş hatası','خطأ في تسجيل الدخول'],
-'خروج انجام نشد':['Logout failed','Çıkış yapılamadı','تعذّر تسجيل الخروج'],
-'خارج شدی':['Logged out','Çıkış yapıldı','تم تسجيل الخروج'],
-'اول وارد شو':['Log in first','Önce giriş yap','سجّل الدخول أولًا'],
-'صبر کن QR آماده بشه':['Wait until the QR is ready','QR\'ın hazır olmasını bekle','انتظر حتى يجهز رمز QR'],
-'در حساب ذخیره شد 💾':['Saved to your account 💾','Hesabına kaydedildi 💾','تم الحفظ في حسابك 💾'],
-'جدول qr_history هنوز ساخته نشده':['The qr_history table has not been created yet','qr_history tablosu henüz oluşturulmadı','لم يتم إنشاء جدول qr_history بعد'],
-'ذخیره انجام نشد':['Could not save','Kaydedilemedi','تعذّر الحفظ'],
-'مطمئنی می‌خوای حذف کنی؟':['Are you sure you want to delete this?','Silmek istediğine emin misin?','هل أنت متأكد من الحذف؟'],
-'حذف شد 🗑':['Deleted 🗑','Silindi 🗑','تم الحذف 🗑'],
-'حذف انجام نشد':['Could not delete','Silinemedi','تعذّر الحذف'],
-'اتصال به Supabase برقرار نشد':['Could not connect to Supabase','Supabase\'e bağlanılamadı','تعذّر الاتصال بـ Supabase'],
-'اتصال Supabase هنوز تنظیم نشده است':['Supabase is not configured yet','Supabase henüz yapılandırılmadı','لم يتم إعداد Supabase بعد'],
-'هنوز QR ذخیره نکردی!':['You haven\'t saved any QR yet!','Henüz hiç QR kaydetmedin!','لم تحفظ أي رمز QR بعد!']
-};
-var TITLE=['ZED QR | Free & Fast QR Code Generator','ZED QR | Ücretsiz ve Hızlı QR Kod Oluşturucu','ZED QR | منشئ رموز QR مجاني وسريع'];
-var PFX=[['خوش اومدی ',['Welcome, ','Hoş geldin, ','أهلًا بك، ']]];
+var LG={en:{n:'English',d:'ltr',l:'en-US',i:0},fa:{n:'فارسی',d:'rtl',l:'fa-IR',i:-1}};
+var T={"ورود / ثبت‌نام":["Log in / Sign up"],"⚡ سریع، ساده، ZED":["⚡ Fast, simple, ZED"],".Your World":["Your World"],".Encoded":["Encoded."],"لینک، متن، Wi‑Fi، تلفن و ایمیل را به QR تبدیل کن؛ شخصی‌سازی کن، دانلود کن و در حساب خودت نگه دار.":["Turn links, text, Wi‑Fi, phone and email into QR codes; customize, download, and keep them in your account."],"ساخت QR رایگان ←":["Create QR for free →"],"ساخت QR":["Create QR"],"کاملاً داخل مرورگر":["Entirely in your browser"],"متن / لینک":["Text / Link"],"تلفن":["Phone"],"ایمیل":["Email"],"رنگ QR":["QR color"],"پس‌زمینه":["Background"],"اندازه":["Size"],"⚡ ساخت QR":["⚡ Generate QR"],"QR هنوز ساخته نشده":["QR not created yet"],"⬇ دانلود":["⬇ Download"],"💾 ذخیره":["💾 Save"],"پنل کاربری":["Dashboard"],"خروج":["Log out"],"QRهای ذخیره‌شده":["Saved QRs"],"آخرین فعالیت":["Last activity"],"نام کاربری":["Username"],"📁 QRهای من":["📁 My QRs"],"حساب و QRهای ذخیره‌شده با Supabase نگهداری می‌شوند.":["Your account and saved QRs are stored with Supabase."],"ورود به حساب":["Log in"],"ساخت حساب":["Create account"],"ورود":["Log in"],"ثبت‌نام":["Sign up"],"رمز عبور":["Password"],"حداقل ۶ کاراکتر":["At least 6 characters"],"متن یا لینک":["Text or link"],"شماره تلفن":["Phone number"],"موضوع":["Subject"],"سلام":["Hello"],"متن":["Text"],"پیام...":["Message..."],"نام شبکه":["Network name"],"رمز":["Password"],"امنیت":["Security"],"مخفی":["Hidden"],"اطلاعات را وارد کن":["Enter the information"],"QR ساخته شد":["QR created"],"QR آماده است ⚡":["QR is ready ⚡"],"اول QR بساز":["Create a QR first"],"ایمیل و رمز را کامل کن":["Fill in email and password"],"ایمیل معتبر وارد کن":["Enter a valid email"],"رمز عبور حداقل ۶ کاراکتر باشد":["Password must be at least 6 characters"],"ثبت‌نام موفق 🎉":["Signed up successfully 🎉"],"ثبت‌نام شد؛ ایمیلت را برای تأیید بررسی کن 📧":["Signed up! Check your email to confirm 📧"],"خوش اومدی 😎":["Welcome 😎"],"ایمیل یا رمز عبور اشتباه است":["Incorrect email or password"],"اول ایمیلت را تأیید کن":["Confirm your email first"],"این ایمیل قبلاً ثبت شده":["This email is already registered"],"خطا در ورود":["Login error"],"خروج انجام نشد":["Logout failed"],"خارج شدی":["Logged out"],"اول وارد شو":["Log in first"],"صبر کن QR آماده بشه":["Wait until the QR is ready"],"در حساب ذخیره شد 💾":["Saved to your account 💾"],"جدول qr_history هنوز ساخته نشده":["The qr_history table has not been created yet"],"ذخیره انجام نشد":["Could not save"],"مطمئنی می‌خوای حذف کنی؟":["Are you sure you want to delete this?"],"حذف شد 🗑":["Deleted 🗑"],"حذف انجام نشد":["Could not delete"],"اتصال به Supabase برقرار نشد":["Could not connect to Supabase"],"اتصال Supabase هنوز تنظیم نشده است":["Supabase is not configured yet"],"هنوز QR ذخیره نکردی!":["You haven't saved any QR yet!"]};
+var TITLE=['ZED QR | Free & Fast QR Code Generator'];
+var PFX=[['خوش اومدی ',['Welcome, ']]];
 var cur='en';try{cur=localStorage.getItem('zedqr_lang')||'en'}catch(e){}
 if(!LG[cur])cur='en';
 var ORIG_TITLE=document.title;
@@ -425,7 +360,7 @@ var _t=window.toast;if(typeof _t=='function')window.toast=function(m){return _t(
 var _c=window.confirm;window.confirm=function(m){return _c(tr(String(m)))};
 window.formatDate=function(v){if(!v)return'—';try{return new Date(v).toLocaleString(LG[cur].l)}catch(e){return v}};
 var s=document.getElementById('lang');
-if(s){s.innerHTML=['en','fa','tr','ar'].map(function(k){return'<option value="'+k+'">'+LG[k].n+'</option>'}).join('');
+if(s){s.innerHTML=['en','fa'].map(function(k){return'<option value="'+k+'">'+LG[k].n+'</option>'}).join('');
  s.onchange=function(){setLang(s.value,true)}}
 setLang(cur,false);
 var hs=document.getElementById('i18nh');if(hs)hs.remove();
