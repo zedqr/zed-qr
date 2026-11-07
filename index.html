@@ -328,8 +328,8 @@ async function zdl(id){const x=zs.find(i=>String(i.id)==String(id));if(!x)return
  const a=document.createElement('a');a.href=x.image;a.download='zed-qr-'+id+'.png';document.body.appendChild(a);a.click();a.remove()}
 async function zdel(id){if(!confirm('این QR حذف شود؟')||!zu||!sb)return;try{const r=await sb.from('qr_history').delete().eq('id',id).eq('user_id',zu.id);if(r.error)throw r.error;await zui();toast('حذف شد')}catch(e){console.error(e);toast('حذف انجام نشد')}}
 
-/* ===== Zed+‎ ===== */
-const PC={n:'6037-0000-0000-0000',o:'نام صاحب کارت'}; /* ← شماره کارت و نام صاحب کارت خودت را اینجا بگذار */
+/* ===== Zed+‎ =====6037-0000-0000-0000 */
+const PC={n:'فعلا در دسترس نیست (به زودی)',o:'نام صاحب کارت'}; /* ← شماره کارت و نام صاحب کارت خودت را اینجا بگذار */
 const PLANS=[{m:1,p:39000},{m:2,p:69000},{m:3,p:99000}]; /* ← اشتراک‌ها: m = ماه، p = قیمت به تومان */
 const MP=39000; /* قیمت یک ماه؛ فقط برای نمایش «صرفه‌جویی» */
 let selM=1,pexp=0,ppend=false;
